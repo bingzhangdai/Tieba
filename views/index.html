@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Tieba</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/sticky-footer.css" rel="stylesheet">
+      <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+   </head>
+   <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right" role="tablist">
+          <li role="presentation" id="signbutton" onmouseover="setactive()" onmouseout="setinactive()"><a href="signout">Signout</a></li>
+        </ul>
+        <h3 class="text-muted">Welcome </h3>
+      </div>
+    </div>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+                    <div id="abstract"> </div>
+					<ul class="pagination">
+					</ul>
+				</div>
+			</div>
+
+    <form role="form" method="post" onsubmit="return check()">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Title" autofocus>
+        <textarea name="content" id ="content" class="form-control" placeholder="What do you want to Say" rows="10"></textarea>
+        <div class="checkbox">
+        </div>
+       <div class="row clearfix">
+        <div class="col-md-12 column" id="blank">
+          <!--<div class="alert alert-dismissable alert-warning">
+            <button class="close" type="button" data-dismiss="alert">×</button>
+            <strong>Attention:</strong> you should fill all the blanks.
+          </div>-->
+        </div>
+      </div>
+
+         <button class="btn btn-default" type="submit" style="float: right">Publish</button>
+
+    </form>
+
+		</div>
+	</div>
+</div>
+
+    <div class="footerf">
+      <div class="container">
+        <p class="text-mutedf">Tieba -- Free Forum.</p>
+      </div>
+    </div>
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/d3.min.js"></script>
+      <script src="javascript/mainpage.js"></script>
+   </body>
+</html>

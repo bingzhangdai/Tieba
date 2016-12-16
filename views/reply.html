@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Tieba</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/sticky-footer.css" rel="stylesheet">
+      <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+   </head>
+   <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right" role="tablist">
+          <li role="presentation" id="backbutton" onmouseover="$('#backbutton').addClass('active')" onmouseout="$('#backbutton').removeClass('active')"><a href="index">Back</a></li>
+          <li role="presentation" id="signbutton" onmouseover="$('#signbutton').addClass('active')" onmouseout="$('#signbutton').removeClass('active')"><a href="signout">Signout</a></li>
+        </ul>
+        <h3 class="text-muted">Reply to: </h3>
+      </div>
+    </div>
+
+<div class="container">
+	<div class="row clearfix">
+
+
+
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+                    <div id="abstract"> </div>
+					<ul class="pagination">
+					</ul>
+				</div>
+			</div>
+
+    <form role="form" method="post" onsubmit="return check()">
+        <textarea name="content" id ="content" class="form-control" placeholder="Type any thing you want to reply to LZ(楼主)" rows="10"></textarea>
+        <div class="checkbox">
+        </div>
+       <div class="row clearfix">
+        <div class="col-md-12 column" id="blank">
+          <!--<div class="alert alert-dismissable alert-warning">
+            <button class="close" type="button" data-dismiss="alert">×</button>
+            <strong>Attention:</strong> you should fill all the blanks.
+          </div>-->
+        </div>
+      </div>
+            <div style="float: left">
+              <p class="popover-options">
+                  <a href="javascript:void(0)" type="button" class="btn btn-default"
+                    data-toggle="popover" data-content="<ul id='myTab' class='nav nav-tabs '>
+                      <li class='active'><a href='#emoji1'' data-toggle='tab'>emoji1</a></li><li><a href='#emoji2' data-toggle='tab'>emoji2</a></li></ul>
+                      
+                      <div id='myTabContent' class='tab-content'>
+                    <div class='tab-pane fade in active' id='emoji1'>
+                      <p>emoji1</p>
+                    </div>
+                    <div class='tab-pane fade' id='emoji2'>
+                      <p>emoji2</p>
+                    </div>
+                    <script> console.log($('#emoji1')) </script>
+                  </div>
+                      
+                      ">
+                      Emoji
+                  </a>
+              </p>
+          </div>
+          <div style="float: right">
+         <button class="btn btn-default" type="submit">Reply</button>
+          </div>
+    </form>
+
+		</div>
+	</div>
+</div>
+
+    <div class="footerf">
+      <div class="container">
+        <p class="text-mutedf">Tieba -- Free Forum.</p>
+      </div>
+    </div>
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/d3.min.js"></script>
+      <script src="javascript/reply.js"></script>
+   </body>
+</html>

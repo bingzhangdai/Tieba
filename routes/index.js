@@ -45,7 +45,7 @@ router.post('index', async function (ctx, next) {
   let content = ctx.request.body;
   content.time = Date.now();
   content.user = ctx.session.username;
-  content.title = await db.saveabstract(content);
+  content.postid = await db.saveabstract(content);
   await db.savepost(content);
   ctx.redirect('index');
 });

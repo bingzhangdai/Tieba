@@ -107,7 +107,7 @@ module.exports = {
     getpost: async (query) => {
         let postid = query.postid;
         let page = query.page;
-        var post = modelcolletions[postid];
+        let post = modelcolletions[postid];
         if (post == undefined) {
             post = mongoose.model(postid, mongoose.Schema({
                 content: String,
@@ -161,5 +161,37 @@ module.exports = {
                 console.log(err);
             }
         });
+    },
+
+    delete: async (tobedeleted) => {
+        const id = tobedeleted.postid;
+        let userpost = modelcolletions[id];
+        await userpost.remove({'_id': tobedeleted._id, 'user': tobedeleted.user}, (err) => {
+            console.log(err);
+        });
+        let res = await userpost.find();
+        // updateabstract
+        if (res.length == 0) {
+            await post.remove({'_id': tobedeleted.postid}, (err) => {
+                console.log(err);
+            });
+        }
+        else {
+            let lastpost = res[res.length - 1];
+            await post.findById(tobedeleted.postid, (err, res) => {
+                if (err) {
+                    console.log(err);
+                }
+                res.content = lastpost.content;
+                res.user = lastpost.user;
+                res.time = lastpost.time;
+                res.save((err) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            });
+        }
+        return res.length;
     }
 }

@@ -113,7 +113,31 @@ router.all('ajax/getpost', async function (ctx, next) {
     page: ctx.query.page
   };
   query.postid = ctx.session.postid;
-  ctx.response.body = await db.getpost(query);
+  let res = await db.getpost(query);
+  // for (let post of res) {
+  //   post["isOwn"] = post.user == ctx.session.username;
+  // }
+  ctx.response.body = res;
 });
+
+router.all('delete', async (ctx, next) => {
+  if (ctx.session.isNew) {
+    ctx.response.body = 0;
+    ctx.redirect('/');
+  }
+  let tobedeleted = {
+    'user': ctx.session.username,
+    'postid': ctx.session.postid,
+    '_id': ctx.query.id
+  };
+  let remaining = await db.delete(tobedeleted);
+  if (remaining == 0) {
+    ctx.redirect('/');
+  }
+  else {
+    ctx.redirect('reply');
+  }
+})
+
 
 module.exports = router;

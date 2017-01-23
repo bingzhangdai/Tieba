@@ -1,5 +1,6 @@
 var globalpage;
 var maxpage;
+var username;
 
 $(document).ready(() => {
     $.get('ajax/title').done((data) => {
@@ -17,7 +18,7 @@ $(document).ready(() => {
         for (let i = 0; i < maxpage; i++) {
             let button = document.createElement('li');
             button.innerHTML = '<a href="javascript:void(0)" onclick="getabstract(' + (i + 1) + ')">' + (i + 1) + '</a>'
-            $('.pagination')[0].appendChild(button)
+            $('.pagination')[0].appendChild(button);
         }
         button = document.createElement('li');
         button.innerHTML = '<a href="javascript:void(0)" onclick="getabstract(globalpage+1)">Next</a>'
@@ -29,6 +30,9 @@ $(document).ready(() => {
         placement: 'top'
         // trigger: 'hover'
     });});
+    $.get('ajax/username').done((name) => {
+        username = name;
+    });
 });
 
 var check = () => {
@@ -66,6 +70,23 @@ function getabstract(page) {
                         .replace(/>/g, '&gt;')
                         .replace(/\n/g, '\<br\>');
             })
+            .append('a')
+            .attr('class', 'btn btn-sm')
+            .attr('style', 'float: right')
+            .attr('type', 'button')
+            // .attr('onclick', (d) => {
+            //     return "deletepost('" + d._id + "')";
+            // })
+            .attr('href', (d) => {
+                return "delete?id=" + d._id;
+            })
+            .text((d) => {
+                let res = "";
+                if (d.user == username) {
+                    res = "delete"
+                }
+                return res;
+            })
         blockquote.append('small')
             .text((d) => {
                 return 'By ' + d.user;
@@ -79,3 +100,6 @@ function getabstract(page) {
     });
 }
 
+var deletepost = (id) => {
+    console.log(id)
+}

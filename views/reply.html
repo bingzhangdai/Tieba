@@ -49,19 +49,24 @@
             <div style="float: left">
               <p class="popover-options">
                   <a href="javascript:void(0)" type="button" class="btn btn-default"
-                    data-toggle="popover" data-content="<ul id='myTab' class='nav nav-tabs '>
-                      <li class='active'><a href='#emoji1'' data-toggle='tab'>emoji1</a></li><li><a href='#emoji2' data-toggle='tab'>emoji2</a></li></ul>
-                      
+                    data-toggle="popover" data-content="
+                    <ul id='myTab' class='nav nav-tabs '>
+                      <li class='active'><a href='#emoji1'' data-toggle='tab'>😒</a></li>
+                      <li><a href='#emoji2' data-toggle='tab'>🎈</a></li>
+                    </ul>
                       <div id='myTabContent' class='tab-content'>
-                    <div class='tab-pane fade in active' id='emoji1'>
-                      <p>emoji1</p>
-                    </div>
-                    <div class='tab-pane fade' id='emoji2'>
-                      <p>emoji2</p>
-                    </div>
-                    <script> console.log($('#emoji1')) </script>
-                  </div>
-                      
+                          <div class='tab-pane fade in active' id='emoji1'>
+                            <!--<p>emoji1</p>-->
+                          </div>
+                          <div class='tab-pane fade' id='emoji2'>
+                            <!--<p>emoji2</p>-->
+                          </div>
+                      <!--<script src='javascript/emoji.js'> </scipt>-->
+                        <script>
+                          emoji('emoji1', emoji1)
+                          emoji('emoji2', emoji2);
+                        </script>
+                      </div>
                       ">
                       Emoji
                   </a>
@@ -85,5 +90,6 @@
       <script src="js/bootstrap.min.js"></script>
       <script src="js/d3.min.js"></script>
       <script src="javascript/reply.js"></script>
+      <script src="javascript/emoji.js"></script>
    </body>
 </html>
